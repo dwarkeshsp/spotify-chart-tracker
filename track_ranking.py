@@ -12,6 +12,7 @@ from pathlib import Path
 import base64
 import anthropic
 from playwright.sync_api import sync_playwright
+from PIL import Image
 
 
 # Configuration
@@ -40,8 +41,9 @@ def capture_chart_screenshot():
     with sync_playwright() as p:
         # Launch browser
         browser = p.chromium.launch(headless=True)
+        # Use a taller viewport to capture more content without needing full_page
         context = browser.new_context(
-            viewport={'width': 1920, 'height': 1080},
+            viewport={'width': 1920, 'height': 4000},  # Tall viewport to capture more rankings
             user_agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
         )
         page = context.new_page()
@@ -62,23 +64,66 @@ def capture_chart_screenshot():
         except:
             pass
         
-        # Scroll down to see more podcasts (especially those ranked 10-20)
-        print("📜 Scrolling to capture all rankings...")
-        page.evaluate("window.scrollTo(0, 800)")
+        # Scroll to top first to include header
+        print("📜 Positioning for screenshot...")
+        page.evaluate("window.scrollTo(0, 0)")
         page.wait_for_timeout(1500)
         
-        # Scroll a bit more to get past rank 15
-        page.evaluate("window.scrollTo(0, 1200)")
-        page.wait_for_timeout(1500)
+        # Scroll down just a tiny bit to get more podcasts while keeping "United States" and "Top Podcasts" header visible
+        page.evaluate("window.scrollTo(0, 150)")
+        page.wait_for_timeout(1000)
         
-        # Take full page screenshot
+        # Move mouse to hover over Dwarkesh Podcast (rank 16)
+        # This creates a nice highlight effect for your podcast
+        try:
+            print("🎯 Highlighting your podcast...")
+            # Find the Dwarkesh Podcast element and hover over it
+            dwarkesh_element = page.locator('text="Dwarkesh Podcast"').first
+            if dwarkesh_element.is_visible(timeout=2000):
+                dwarkesh_element.hover()
+                page.wait_for_timeout(500)
+        except:
+            # If we can't find it, move mouse far away to avoid any hover effects
+            page.mouse.move(0, 0)
+        
+        # Take viewport screenshot (not full page - this will be higher quality)
         print(f"📸 Capturing screenshot...")
-        page.screenshot(path=str(screenshot_path), full_page=True)
+        page.screenshot(path=str(screenshot_path), full_page=False)
         
         browser.close()
     
     print(f"✅ Screenshot saved: {screenshot_path}")
     return screenshot_path
+
+
+def resize_image_if_needed(image_path, max_dimension=7000):
+    """
+    Resize image if any dimension exceeds max_dimension while maintaining aspect ratio.
+    Claude has a limit of 8000px per dimension, so we use 7000 to be safe.
+    """
+    img = Image.open(image_path)
+    width, height = img.size
+    
+    # Check if resizing is needed
+    if width <= max_dimension and height <= max_dimension:
+        return image_path
+    
+    # Calculate new dimensions
+    if width > height:
+        new_width = max_dimension
+        new_height = int((max_dimension / width) * height)
+    else:
+        new_height = max_dimension
+        new_width = int((max_dimension / height) * width)
+    
+    # Resize image
+    resized_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+    
+    # Save resized image (overwrite the original)
+    resized_img.save(image_path, optimize=True, quality=95)
+    print(f"📐 Resized image from {width}x{height} to {new_width}x{new_height}")
+    
+    return image_path
 
 
 def analyze_ranking_with_claude(screenshot_path):
@@ -92,6 +137,9 @@ def analyze_ranking_with_claude(screenshot_path):
     if not api_key:
         raise ValueError("ANTHROPIC_API_KEY environment variable not set!")
     
+    # Resize image if needed (Claude has 8000px limit per dimension)
+    screenshot_path = resize_image_if_needed(screenshot_path)
+    
     # Read and encode the screenshot
     with open(screenshot_path, "rb") as image_file:
         image_data = base64.standard_b64encode(image_file.read()).decode("utf-8")
@@ -102,18 +150,25 @@ def analyze_ranking_with_claude(screenshot_path):
     # Construct the prompt
     prompt = f"""Look at this Spotify podcast chart screenshot and find the ranking for "{PODCAST_NAME}".
 
+IMPORTANT: The podcast name might appear as variations like:
+- "Dwarkesh Podcast"
+- "Dwarkesh Patel"  
+- "The Dwarkesh Podcast"
+- Or just "Dwarkesh" in the title
+
 Please analyze the image and respond with ONLY a JSON object in this exact format:
 {{
     "ranking": <number or null if not found>,
     "found": <true or false>,
+    "podcast_title": "<exact name as shown on chart>",
     "notes": "<brief note about the ranking or why it wasn't found>"
 }}
 
-Search carefully through all visible podcast names. The podcast might be anywhere from rank 1 to 20 or beyond."""
+Search carefully through all visible podcast names. Look at BOTH the podcast title and the author/host name. The podcast might be anywhere from rank 1 to 100 or beyond."""
 
     # Call Claude Vision API
     message = client.messages.create(
-        model="claude-3-5-sonnet-20241022",
+        model="claude-sonnet-4-5-20250929",
         max_tokens=1024,
         messages=[
             {
