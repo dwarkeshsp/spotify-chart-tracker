@@ -1,0 +1,63 @@
+name: Daily Podcast Ranking Tracker
+
+on:
+  schedule:
+    # Run every day at 10:00 AM UTC (adjust time as needed)
+    - cron: '0 10 * * *'
+  
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  track-ranking:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # Allow pushing changes back to repo
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for proper git operations
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+          playwright install-deps chromium
+      
+      - name: Run ranking tracker
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python track_ranking.py
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add rankings.csv screenshots/ RANKING_REPORT.md
+          
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📊 Daily ranking update: $(date +'%Y-%m-%d')"
+            git push
+          fi
+      
+      - name: Upload screenshot artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chart-screenshot-${{ github.run_number }}
+          path: screenshots/*.png
+          retention-days: 90  # Keep screenshots for 90 days
+
