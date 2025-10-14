@@ -64,13 +64,14 @@ def capture_chart_screenshot():
         except:
             pass
         
-        # Scroll to top first to include header
+        # Scroll to top first to include full header
         print("📜 Positioning for screenshot...")
         page.evaluate("window.scrollTo(0, 0)")
         page.wait_for_timeout(1500)
         
-        # Scroll down just a tiny bit to get more podcasts while keeping "United States" and "Top Podcasts" header visible
-        page.evaluate("window.scrollTo(0, 150)")
+        # Scroll down just slightly to get more podcasts while keeping full "United States" and "Top Podcasts" header visible
+        # Using 50px to show more of the header while still capturing ranks 1-20+
+        page.evaluate("window.scrollTo(0, 50)")
         page.wait_for_timeout(1000)
         
         # Move mouse to hover over Dwarkesh Podcast (rank 16)
@@ -132,10 +133,11 @@ def analyze_ranking_with_claude(screenshot_path):
     """
     print(f"🤖 Analyzing screenshot with Claude Vision API...")
     
-    # Get API key from environment
+    # Get API key from environment and strip any whitespace/newlines
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         raise ValueError("ANTHROPIC_API_KEY environment variable not set!")
+    api_key = api_key.strip()  # Remove any trailing newlines or whitespace
     
     # Resize image if needed (Claude has 8000px limit per dimension)
     screenshot_path = resize_image_if_needed(screenshot_path)
