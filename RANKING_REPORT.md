@@ -1,15 +1,16 @@
 # 🎙️ Dwarkesh Podcast - Spotify Chart Rankings
 
 ## Latest Update
-- **Date**: 2025-10-19
-- **Ranking**: #41 📉
-- **Trend**: Down 15 positions
+- **Date**: 2025-10-20
+- **Ranking**: #60 📉
+- **Trend**: Down 19 positions
 - **Status**: ✅ Found on charts
 
 ## Recent History (Last 10 Days)
 
 | Date | Ranking | Change | Notes |
 |------|---------|--------|-------|
+| 2025-10-20 | #60 | 📉 -19 | Found at rank 60, listed under 'DWARKESH PATEL' as |
 | 2025-10-19 | #41 | 📉 -15 | Found at rank 41, hosted by DWARKESH PATEL |
 | 2025-10-18 | #26 | 📉 -7 | Found at rank 26, hosted by DWARKESH PATEL |
 | 2025-10-17 | #19 | 📉 -2 | Found at rank 19, hosted by DWARKESH PATEL |
@@ -21,14 +22,14 @@
 
 ## 📈 Statistics
 - **Best Ranking**: #16
-- **Current Ranking**: #41
-- **Average Ranking**: #21.0
-- **Total Tracking Days**: 8
-- **Days on Charts**: 8
+- **Current Ranking**: #60
+- **Average Ranking**: #25.3
+- **Total Tracking Days**: 9
+- **Days on Charts**: 9
 
 ## 📸 Latest Screenshot
-![Latest Chart](screenshots/chart_20251019_100546.png)
+![Latest Chart](screenshots/chart_20251020_100633.png)
 
 ---
-*Last updated: 2025-10-19 10:05:56 UTC*
+*Last updated: 2025-10-20 10:06:44 UTC*
 *Tracking powered by Claude Vision API & Playwright*
