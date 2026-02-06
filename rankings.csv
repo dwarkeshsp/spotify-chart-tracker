@@ -116,3 +116,4 @@ date,timestamp,ranking,found,notes,screenshot
 2026-02-03,2026-02-03T10:15:55.194385,,False,Dwarkesh Podcast does not appear in the visible top 36 podcasts on this United States Top Podcasts chart,screenshots/chart_20260203_101538.png
 2026-02-04,2026-02-04T10:17:12.751931,,False,Searched through all 36 visible podcast rankings (1-36) and did not find any podcast with 'Dwarkesh' in either the title or host name. The podcast is not present in this portion of the chart.,screenshots/chart_20260204_101659.png
 2026-02-05,2026-02-05T10:17:24.465995,,False,Searched through all 36 visible podcasts in the chart. No podcast with 'Dwarkesh' in the title or host name was found in this view.,screenshots/chart_20260205_101715.png
+2026-02-06,2026-02-06T10:16:15.443168,,False,Dwarkesh Podcast or any variation with 'Dwarkesh' is not visible in the top 36 podcasts shown in this chart,screenshots/chart_20260206_101558.png
