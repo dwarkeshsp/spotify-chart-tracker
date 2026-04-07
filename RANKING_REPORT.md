@@ -1,15 +1,16 @@
 # 🎙️ Dwarkesh Podcast - Spotify Chart Rankings
 
 ## Latest Update
-- **Date**: 2026-04-06
-- **Ranking**: #95 📉
-- **Trend**: Down 19 positions
-- **Status**: ✅ Found on charts
+- **Date**: 2026-04-07
+- **Ranking**: # 📊
+- **Trend**: First recording
+- **Status**: ❌ Not found on charts
 
 ## Recent History (Last 10 Days)
 
 | Date | Ranking | Change | Notes |
 |------|---------|--------|-------|
+| 2026-04-07 | # | - | Dwarkesh Podcast is not visible in the displayed r |
 | 2026-04-06 | #95 | 📉 -19 | Found at rank 95, hosted by DWARKESH PATEL |
 | 2026-04-05 | #76 | 📉 -7 | Found at rank 76, hosted by DWARKESH PATEL |
 | 2026-04-04 | #69 | 📉 -5 | Found at rank 69, hosted by Dwarkesh Patel |
@@ -19,18 +20,17 @@
 | 2026-02-19 | #92 | - | Found at rank 92, hosted by Dwarkesh Patel |
 | 2026-02-18 | # | - | Dwarkesh Podcast is not visible in the top 36 podc |
 | 2026-02-17 | # | - | Dwarkesh Podcast does not appear in the visible ra |
-| 2026-02-16 | # | - | Dwarkesh Podcast does not appear in the visible to |
 
 ## 📈 Statistics
 - **Best Ranking**: #16
-- **Current Ranking**: #95
+- **Current Ranking**: #
 - **Average Ranking**: #59.2
-- **Total Tracking Days**: 137
+- **Total Tracking Days**: 138
 - **Days on Charts**: 22
 
 ## 📸 Latest Screenshot
-![Latest Chart](screenshots/chart_20260406_102707.png)
+![Latest Chart](screenshots/chart_20260407_102452.png)
 
 ---
-*Last updated: 2026-04-06 10:27:17 UTC*
+*Last updated: 2026-04-07 10:25:14 UTC*
 *Tracking powered by Claude Vision API & Playwright*
