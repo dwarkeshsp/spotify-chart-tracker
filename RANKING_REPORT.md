@@ -1,7 +1,7 @@
 # 🎙️ Dwarkesh Podcast - Spotify Chart Rankings
 
 ## Latest Update
-- **Date**: 2026-05-04
+- **Date**: 2026-05-05
 - **Ranking**: # 📊
 - **Trend**: First recording
 - **Status**: ❌ Not found on charts
@@ -10,6 +10,7 @@
 
 | Date | Ranking | Change | Notes |
 |------|---------|--------|-------|
+| 2026-05-05 | # | - | Dwarkesh Podcast does not appear in the visible ra |
 | 2026-05-04 | # | - | Searched through all 32 visible rankings on the ch |
 | 2026-05-03 | # | - | Searched through all 32 visible rankings on the ch |
 | 2026-05-02 | # | - | Dwarkesh Podcast is not visible in rankings 1-32 s |
@@ -19,18 +20,17 @@
 | 2026-04-28 | # | - | Dwarkesh Podcast does not appear in the visible ra |
 | 2026-04-27 | # | - | Dwarkesh Podcast is not visible in the top 32 rank |
 | 2026-04-26 | # | - | Dwarkesh Podcast or any variation of that name is  |
-| 2026-04-25 | # | - | Dwarkesh Podcast does not appear in the visible ra |
 
 ## 📈 Statistics
 - **Best Ranking**: #16
 - **Current Ranking**: #
 - **Average Ranking**: #59.2
-- **Total Tracking Days**: 165
+- **Total Tracking Days**: 166
 - **Days on Charts**: 22
 
 ## 📸 Latest Screenshot
-![Latest Chart](screenshots/chart_20260504_104243.png)
+![Latest Chart](screenshots/chart_20260505_103541.png)
 
 ---
-*Last updated: 2026-05-04 10:42:52 UTC*
+*Last updated: 2026-05-05 10:36:03 UTC*
 *Tracking powered by Claude Vision API & Playwright*
