@@ -196,3 +196,4 @@ date,timestamp,ranking,found,notes,screenshot
 2026-06-05,2026-06-05T11:09:57.772719,,False,Dwarkesh Podcast does not appear in the visible rankings 1-32 on this Spotify chart screenshot,screenshots/chart_20260605_110935.png
 2026-06-06,2026-06-06T10:40:19.272705,,False,Searched through all 32 visible rankings on this Spotify podcast chart. No podcast with 'Dwarkesh' in the title or author name was found in the displayed rankings.,screenshots/chart_20260606_104010.png
 2026-06-07,2026-06-07T10:47:50.210249,,False,Searched through all 32 visible podcasts on the chart. No podcast with 'Dwarkesh' in either the title or host name was found in this view.,screenshots/chart_20260607_104741.png
+2026-06-08,2026-06-08T11:39:30.984585,,False,Dwarkesh Podcast does not appear in the visible top 32 podcasts on this Spotify chart,screenshots/chart_20260608_113908.png
