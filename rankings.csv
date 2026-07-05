@@ -223,3 +223,4 @@ date,timestamp,ranking,found,notes,screenshot
 2026-07-02,2026-07-02T10:56:35.721042,,False,Dwarkesh Podcast does not appear in the visible rankings 1-32 of this chart,screenshots/chart_20260702_105611.png
 2026-07-03,2026-07-03T12:08:41.962537,,False,Dwarkesh Podcast or any variation is not visible in rankings 1-32 of this chart screenshot,screenshots/chart_20260703_120815.png
 2026-07-04,2026-07-04T11:25:14.023949,,False,"Searched through all 32 visible podcast entries (ranks 1-32) and did not find any podcast titled 'Dwarkesh Podcast', 'Dwarkesh Patel', 'The Dwarkesh Podcast', or any variation with 'Dwarkesh' in either the title or host name fields.",screenshots/chart_20260704_112504.png
+2026-07-05,2026-07-05T11:28:53.723329,,False,Dwarkesh Podcast is not visible in the top 32 rankings shown in this screenshot,screenshots/chart_20260705_112831.png
